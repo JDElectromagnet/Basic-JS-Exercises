@@ -80,13 +80,27 @@ HINT: Use split() and substring()
  --------------------------- */
 
 function protect_email(email) {
+
+
+  var lastpart;
+  var firstpart;
+
+  firstpart= email.substring(0,email.indexOf("@")-3);
+  console.log(firstpart);
+
+  lastpart = email.substring(email.indexOf("@")+1,email.length);
+  console.log(lastpart);
+
+
+  console.log(firstpart +"...@"+ lastpart);
+
   return "protected email";
 }
 
 console.log("Protected email:");
 /* Uncomment the following to check */
-  //console.log(protect_email("harry_potter@gmail.com"));
-  //console.log(protect_email("sarah.connor@gmail.com"));
+  console.log(protect_email("harry_potter@gmail.com"));
+  console.log(protect_email("sarah.connor@gmail.com"));
 
 
 
@@ -106,13 +120,25 @@ HINT: Use join(), split() and sort() functions
  --------------------------- */
 
 function alphabetic_order(word) {
+
+  var array= [word.length];
+  for (var i = 0; i < word.length; i++) {
+
+      array[i]=word[i].split();
+
+  }
+
+    var s = array.sort();
+
+    console.log(array);
+
   return "rearranged word";
 }
 
 console.log("Alphabetic Order:");
 /* Uncomment the following to check */
-  // console.log(alphabetic_order("webmaster"));
-  // console.log(alphabetic_order("textbook"));
+   console.log(alphabetic_order("webmaster"));
+   console.log(alphabetic_order("textbook"));
 
 
 
@@ -125,7 +151,8 @@ Write a JavaScript program to find and remove duplicate values in a JavaScript a
 
 Test:
 remove_duplicates([3, 'a', 'a', 'a', 2, 3, 'a', 3, 'a', 2, 4, 9, 3]);
-
+remove_duplicates([3, 'a', 'a', 'a', 2, 3, 'a', 3, 'a', 2, 4, 9, 3]);
+text 3
 Output:
 [3, 'a', 2, 4, 9]
 
@@ -133,11 +160,28 @@ Output:
 
 function remove_duplicates(arr) {
   console.log("Duplicates removed from array");
+
+    var text=[];
+  for (var i = 0; i < arr.length; i++) {
+    for (var j = 0; j < arr.length; j++) {
+        if(arr[i]==arr[j])
+        {
+          if (arr[i]!=text[i]) {
+              text[i]=arr[i];
+              break;
+          }
+        }
+
+    }
+
+
+  }
+  console.log(text);
 }
 
 console.log("Remove Duplicate Values:");
 /* Uncomment the following to check */
-  // remove_duplicates([3, 'a', 'a', 'a', 2, 3, 'a', 3, 'a', 2, 4, 9, 3]);
+   remove_duplicates([3, 'a', 'a', 'a', 2, 3, 'a', 3, 'a', 2, 4, 9, 3]);
 
 
 /* ---------------------------
@@ -157,14 +201,33 @@ HINT: Use toString() and parseInt() functions
 
 function dash_in_odd(number) {
   console.log("odd numbers separated by dashes");
+  var singledigit = [],
+      text = [],
+      conToString = number.toString();
+
+  for (var i = 0, len = conToString.length; i < len; i += 1) {
+      singledigit.push(+conToString.charAt(i));
+  }
+
+  console.log(singledigit);
+
+  for (var i = 0; i < singledigit.length; i++) {
+    text[i]= singledigit[i];
+    if (   singledigit[i]%2!=0) {
+      text[i] = singledigit[i]+"-";
+
+    }
+  }
+  console.log(text);
+
 }
 
 console.log("Dash between ODD Numbers:");
 /* Uncomment the following to check */
   dash_in_odd(100);
   dash_in_odd(1356);
-  dash_in_odd(13790);
-  dash_in_odd(132459784);
+//  dash_in_odd(13790);
+//  dash_in_odd(132459784);
 
 
 /* ---------------------------
@@ -182,10 +245,17 @@ HINT: Use Math.ceil() and Math.random()
 function guessing_game(guess) {
   // Get a random integer from 1 to 10 inclusive
   console.log("matched or unmatched?");
+  var x = Math.floor((Math.random() * 10) + 1);
+  if(x==guess)
+  {
+    console.log("Good Work");
+  }
+  console.log(x);
+
 }
 
 console.log("Guessing Game:");
 /* Uncomment the following to check */
-  // var guess = prompt('Guess the number between 1 and 10 inclusive');
-  // console.log("User guessed: "+ guess);
-  // guessing_game(guess);
+   var guess = prompt('Guess the number between 1 and 10 inclusive');
+   console.log("User guessed: "+ guess);
+   guessing_game(guess);
